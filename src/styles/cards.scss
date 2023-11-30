@@ -1,0 +1,156 @@
+.gamesList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  grid-gap: 1rem;
+  padding: 2rem;
+
+  @include mq($from: tablet) {
+    padding: 3rem 6rem;
+  }
+
+  @include mq($from: desktop) {
+    padding: 6rem 9rem;
+  }
+}
+
+.gameCard {
+  $gc: &;
+  $borderRadius: 1.2rem;
+
+  background-color: $gameCard-backgroundColor;
+  border-radius: $borderRadius;
+  color: $color-white;
+
+  &-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-media {
+    position: relative;
+    padding-bottom: 56.25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-infos {
+    padding: 1.6rem 1.6rem 2.4rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-heading {
+    margin: 0.8rem 0;
+    height: 4.5rem;
+  }
+
+  &-image {
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: $borderRadius;
+    border-top-right-radius: $borderRadius;
+  }
+
+  &-platforms {
+    display: flex;
+    margin-bottom: 0.7rem;
+  }
+
+  &-platform {
+    width: 1.7rem;
+    height: 1.3rem;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &-link {
+    color: $color-white;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.gameCardButtons {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.gameCardButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.6rem;
+  color: hsla(0, 0%, 100%, 0.4);
+  border-radius: 4px;
+  transition: all 0.3s;
+
+  &:not(:last-child) {
+    margin-right: 0.4rem;
+  }
+
+  &--light {
+    background: hsla(0, 0%, 100%, 0.1);
+  }
+
+  &-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}
+
+.gameCardAbout {
+  $gca: &;
+
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style-type: none;
+
+  &-viewMore {
+    max-height: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 1.2rem;
+
+    &:not(:last-child) {
+      padding-bottom: 1.2rem;
+      border-bottom: 0.1rem solid hsla(0, 0%, 100%, 0.07);
+    }
+
+    &--center {
+      justify-content: center;
+    }
+  }
+
+  &-more {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &--active {
+    #{$gca}-viewMore {
+      max-height: 24rem;
+      visibility: visible;
+    }
+  }
+}

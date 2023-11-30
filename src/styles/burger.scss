@@ -1,0 +1,50 @@
+.Burger {
+  $bg: &;
+
+  width: 2rem;
+  height: 2rem;
+  display: none;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+  z-index: 3;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  cursor: pointer;
+
+  @include mq($until: tablet) {
+    display: flex;
+  }
+
+  &Bar {
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 1rem;
+    background-color: $color-white;
+    transform-origin: 0.1rem;
+    transition: all 0.3s linear;
+
+    &IsOpen {
+      &--1 {
+        transform: rotate(47deg);
+      }
+
+      &--2 {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+
+      &--3 {
+        transform: rotate(-47deg);
+      }
+    }
+  }
+
+  &.Navbar--isOpen {
+    $ni: &;
+
+    &+.Navbar-list {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+}
