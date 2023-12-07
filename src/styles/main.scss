@@ -3,9 +3,10 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-family: lato-regular, sans-serif;
-  background: $color-white;
+  color: $color-white;
+  background-color: $body-backgroundColor;
 }
 
 html,

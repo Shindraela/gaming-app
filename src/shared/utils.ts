@@ -6,9 +6,9 @@ import nintendoLogo from '../assets/nintendo.svg';
 import pcLogo from '../assets/pc.svg';
 import playstationLogo from '../assets/playstation.svg';
 import xboxLogo from '../assets/xbox.svg';
-import { BASE_URL } from './constants';
+import webLogo from '../assets/web.svg';
 
-const setPlatformLogo = (slug: string) => {
+const setPlatformLogo = (slug: string): string => {
   let logo;
   slug = slug.toLocaleLowerCase();
 
@@ -18,7 +18,7 @@ const setPlatformLogo = (slug: string) => {
     logo = iosLogo;
   } else if (slug.includes('linux')) {
     logo = linuxLogo;
-  } else if (slug.includes('macos')) {
+  } else if (slug.includes('macos') || slug.includes('mac')) {
     logo = macOsLogo;
   } else if (
     slug.includes('nintendo') ||
@@ -32,13 +32,27 @@ const setPlatformLogo = (slug: string) => {
     logo = playstationLogo;
   } else if (slug.includes('xbox')) {
     logo = xboxLogo;
+  } else if (slug.includes('web')) {
+    logo = webLogo;
   } else {
-    logo = 'null';
+    logo = '';
   }
 
   return logo;
 };
 
-const setGameDetailsUrl = (gameName: string) => `${BASE_URL}/games/${gameName}`;
+const setGameDetailsUrl = (sectionName: string, gameSlug: string): string =>
+  `/${sectionName}/${gameSlug}`;
 
-export { setPlatformLogo, setGameDetailsUrl };
+const formattedDate = (date: string): string => {
+  const currentDate = new Date(date);
+
+  return new Intl.DateTimeFormat('fr-FR', {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(currentDate);
+};
+
+export { setPlatformLogo, setGameDetailsUrl, formattedDate };
