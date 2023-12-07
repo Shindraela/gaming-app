@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Burger } from './Burger';
 import { Searchbar } from './Searchbar';
-// import androidLogo from '../assets/android.svg';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -16,11 +15,9 @@ export const Navbar = () => {
       <ul className="Navbar-list">
         <li className="Navbar-listItem">Contact us</li>
         <li className="Navbar-listItem">About</li>
-        <li className="Navbar-listItem">Home</li>
-        {/* <li
-          style={{ backgroundImage: `url(${androidLogo})` }}
-          className="test"
-        ></li> */}
+        <li className="Navbar-listItem">
+          <a href="/">Home</a>
+        </li>
       </ul>
       <Searchbar />
     </div>

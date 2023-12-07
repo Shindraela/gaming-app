@@ -1,13 +1,15 @@
 import { createContext, useState, useEffect } from 'react';
 import { API_BASE_URL, API_KEY } from '../shared/constants';
 import ChildrenProps from '../types/children';
-import IGame, { GamesContextType } from '../types/game';
+import IGame, { GamesContextType, IScreenshot } from '../types/game';
 import response from '../shared/response.json';
 
 const GamesContext = createContext<GamesContextType>({} as GamesContextType);
 
 export const GamesProvider = ({ children }: ChildrenProps) => {
   const [games, setGames] = useState<IGame[]>([]);
+  const [currentGame, setCurrentGame] = useState<IGame | null>(null);
+  const [screenshots, setGameScreenshots] = useState<IScreenshot[]>([]);
 
   useEffect(() => {
     // @TODO: use real data when it will be OK
@@ -30,7 +32,16 @@ export const GamesProvider = ({ children }: ChildrenProps) => {
   }, []);
 
   return (
-    <GamesContext.Provider value={{ games, setGames }}>
+    <GamesContext.Provider
+      value={{
+        games,
+        setGames,
+        currentGame,
+        setCurrentGame,
+        screenshots,
+        setGameScreenshots
+      }}
+    >
       {children}
     </GamesContext.Provider>
   );

@@ -21,8 +21,8 @@ export const GameCard = ({ game }: GameProps) => {
         <div className="gameCard-infos">
           <div className="gameCard-meta">
             <div className="gameCard-platforms">
-              {game.platforms &&
-                game.platforms.map((pf, index) => (
+              {game.parent_platforms &&
+                game.parent_platforms.map((pf, index) => (
                   <img
                     className="gameCard-platform"
                     key={index}
@@ -34,9 +34,8 @@ export const GameCard = ({ game }: GameProps) => {
 
           <div className="gameCard-heading">
             <a
-              href={setGameDetailsUrl(game.slug)}
+              href={setGameDetailsUrl('games', game.slug)}
               className="gameCard-link"
-              target="_blank"
               title={game.name}
             >
               {game.name}

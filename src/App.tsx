@@ -15,7 +15,7 @@ function App() {
           element={<GamesList />}
         />
         <Route
-          path="/games/:id"
+          path="/games/:slug"
           element={<Game />}
         />
       </Route>

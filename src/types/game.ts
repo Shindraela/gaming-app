@@ -19,7 +19,14 @@ export default interface IGame {
   website: string;
   rating: number;
   rating_top: number;
-  ratings: {};
+  ratings: [
+    {
+      id: number;
+      title: string;
+      count: number;
+      percent: number;
+    }
+  ];
   reactions: {};
   added: number;
   added_by_status: {};
@@ -49,6 +56,7 @@ export default interface IGame {
     slug: string;
     name: string;
   };
+  description_raw: string;
   platforms: [
     {
       platform: {
@@ -63,6 +71,47 @@ export default interface IGame {
       };
     }
   ];
+  parent_platforms: [
+    {
+      platform: {
+        id: number;
+        name: string;
+        slug: string;
+      };
+    }
+  ];
+  stores: [
+    {
+      id: number;
+      url: string;
+      store: {
+        id: number;
+        name: string;
+        slug: string;
+        domain: string;
+        games_count: number;
+        image_background: string;
+      };
+    }
+  ];
+  developers: [
+    {
+      id: number;
+      name: string;
+      slug: string;
+      games_count: number;
+      image_background: string;
+    }
+  ];
+  publishers: [
+    {
+      id: number;
+      name: string;
+      slug: string;
+      games_count: number;
+      image_background: string;
+    }
+  ];
   genres: [
     {
       id: number;
@@ -72,9 +121,31 @@ export default interface IGame {
       image_background: string;
     }
   ];
+  tags: [
+    {
+      id: number;
+      name: string;
+      slug: string;
+      language: string;
+      games_count: number;
+      image_background: string;
+    }
+  ];
 }
+
+export type IScreenshot = {
+  height: number;
+  id: number;
+  image: string;
+  is_deleted: boolean;
+  width: number;
+};
 
 export type GamesContextType = {
   games: IGame[];
   setGames: (games: IGame[]) => void;
+  currentGame: IGame | null;
+  setCurrentGame: (game: IGame) => void;
+  screenshots: IScreenshot[];
+  setGameScreenshots: (screenshots: IScreenshot[]) => void;
 };

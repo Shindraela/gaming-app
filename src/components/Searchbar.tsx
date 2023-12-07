@@ -35,8 +35,8 @@ export const Searchbar = () => {
         <div className="Searchbar-results">
           {results.map((game) => (
             <a
-              key={game.id}
-              href={`/games/${game.id}`}
+              key={game.slug}
+              href={`/games/${game.slug}`}
               onClick={resetSearch}
               className="Searchbar-gameLink"
               tabIndex={0}
